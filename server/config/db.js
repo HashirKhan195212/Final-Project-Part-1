@@ -1,0 +1,1 @@
+module.exports = {"URI":"mongodb+srv://hashirkhan:Akmax1952@cluster0.fjkb9.mongodb.net/bookList?retryWrites=true&w=majority"}
