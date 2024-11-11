@@ -26,8 +26,7 @@
                     <td class="text-center col-1"><%= calculatorList[count].MarksG %> </td>
                     <td class="text-center col-1"><%= calculatorList[count].MarksT %> </td>
                     <td class="text-center col-2">
-                        <%= (Number(calculatorList[count].MarksG) && Number(calculatorList[count].MarksT)) ? 
-                            ((Number(calculatorList[count].MarksG) / Number(calculatorList[count].MarksT)) * 100).toFixed(2) + '%' : '-' %>
+                        <%= ((Number(calculatorList[count].MarksG) / Number(calculatorList[count].MarksT))*100) %>%
                     </td>
                     
                     <td class="text-center col-1">
