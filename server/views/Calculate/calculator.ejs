@@ -13,19 +13,23 @@
                 <tr class="d-flex">
                     <th class="text-center col-2">Course</th>
                     <th class="text-center col-2">Course Code</th>
-                    <th class="text-center col-1">Professor</th>
+                    <th class="text-center col-2">Professor</th>
                     <th class="text-center col-1">Marks Gained</th>
                     <th class="text-center col-1">Total Marks</th>
-                    <th class="text-center col-1">Percentage</th>
+                    <th class="text-center col-2">Percentage</th>
                 </tr>
                 <% for(let count=0;count<calculatorList.length;count++) { %>
                 <tr class="d-flex">
                     <td class="text-center col-2"><%= calculatorList[count].Course %></td>
                     <td class="text-center col-2"><%= calculatorList[count].CourseCode %></td>
-                    <td class="text-center col-1"><%=calculatorList[count].Professor%></td>
-                    <td class="col-1"><%= calculatorList[count].MarksG %> </td>
-                    <td class="col-1"><%= calculatorList[count].MarksT %> </td>
-                    <td class="col-4"><%= calculatorList[count].Percentage %> </td>
+                    <td class="text-center col-2"><%= calculatorList[count].Professor %></td>
+                    <td class="text-center col-1"><%= calculatorList[count].MarksG %> </td>
+                    <td class="text-center col-1"><%= calculatorList[count].MarksT %> </td>
+                    <td class="text-center col-2">
+                        <%= (Number(calculatorList[count].MarksG) && Number(calculatorList[count].MarksT)) ? 
+                            ((Number(calculatorList[count].MarksG) / Number(calculatorList[count].MarksT)) * 100).toFixed(2) + '%' : '-' %>
+                    </td>
+                    
                     <td class="text-center col-1">
                         <a href="/calculator/edit/<%= calculatorList[count]._id%>"
                             class="btn btn-primary btn-sm">

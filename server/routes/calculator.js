@@ -36,11 +36,11 @@ router.get('/add', async (req, res, next) => {
 router.post('/add', async (req, res, next) => {
     try {
         let newCalculator = new Calculator({
-            "Name": req.body.Name,
-            "Author": req.body.Author,
-            "Published": req.body.Published,
-            "Description": req.body.Description,
-            "Price": req.body.Price
+            "Course": req.body.Course,
+            "CourseCode": req.body.CourseCode,
+            "Professor": req.body.Professor,
+            "MarksG": req.body.MarksG,
+            "MarksT": req.body.MarksT
         });
         await newCalculator.save(); // Use save instead of create for a cleaner approach
         res.redirect('/');  // Redirect to home page (or to your books list)
@@ -58,10 +58,10 @@ router.get('/edit/:id', async (req, res, next) => {
         const id = req.params.id;
         const BookToEdit = await Book.findById(id);
         if (!BookToEdit) {
-            return res.status(404).send('Book not found');
+            return res.status(404).send('Values not found');
         }
         res.render('Book/edit', {
-            title: 'Edit Book',
+            title: 'Edit Values',
             Book: BookToEdit
         });
     } catch (err) {
@@ -94,11 +94,11 @@ router.post('/edit/:id', async (req, res, next) => {
 router.post('/delete/:id', async (req, res, next) => {
     try {
         let id = req.params.id;
-        await Book.deleteOne({ _id: id });
+        await Calculator.deleteOne({ _id: id });
         res.redirect('/');  // Redirect to home page (or to your books list)
     } catch (err) {
         console.error(err);
-        res.render('Book/list', {
+        res.render('Calculate/calculator', {
             error: 'Error on server'
         });
     }
