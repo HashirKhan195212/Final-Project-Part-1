@@ -6,7 +6,7 @@ let Calculator = require('../model/calculator');
 router.get('/', async (req, res, next) => {
     try {
         const calculatorList = await Calculator.find();
-        res.render('Calculate/calculator', {
+        res.render('calculate/calculator', {
             title: 'Calculator',
             calculatorList: calculatorList
         });
@@ -21,12 +21,12 @@ router.get('/', async (req, res, next) => {
 // Route to show the add book page
 router.get('/add', async (req, res, next) => {
     try {
-        res.render('Book/add', {
-            title: "Add Book"
+        res.render('Calculate/add', {
+            title: "Add Grade"
         });
     } catch (err) {
         console.error(err);
-        res.render('Book/list', {
+        res.render('calculator', {
             error: 'Error on Server'
         });
     }
@@ -35,18 +35,18 @@ router.get('/add', async (req, res, next) => {
 // Route to handle adding a book
 router.post('/add', async (req, res, next) => {
     try {
-        let newBook = new Book({
+        let newCalculator = new Calculator({
             "Name": req.body.Name,
             "Author": req.body.Author,
             "Published": req.body.Published,
             "Description": req.body.Description,
             "Price": req.body.Price
         });
-        await newBook.save(); // Use save instead of create for a cleaner approach
+        await newCalculator.save(); // Use save instead of create for a cleaner approach
         res.redirect('/');  // Redirect to home page (or to your books list)
     } catch (err) {
         console.error(err);
-        res.render('Book/list', {
+        res.render('calculator', {
             error: 'Error on server'
         });
     }
