@@ -56,13 +56,13 @@ router.post('/add', async (req, res, next) => {
 router.get('/edit/:id', async (req, res, next) => {
     try {
         const id = req.params.id;
-        const BookToEdit = await Book.findById(id);
-        if (!BookToEdit) {
+        const CalculatorToEdit = await Calculator.findById(id);
+        if (!CalculatorToEdit) {
             return res.status(404).send('Values not found');
         }
-        res.render('Book/edit', {
+        res.render('Calculate/edit', {
             title: 'Edit Values',
-            Book: BookToEdit
+            Calculator: CalculatorToEdit
         });
     } catch (err) {
         console.error(err);
@@ -74,15 +74,15 @@ router.get('/edit/:id', async (req, res, next) => {
 router.post('/edit/:id', async (req, res, next) => {
     try {
         let id = req.params.id;
-        let updatedBook = {
-            "Name": req.body.Name,
-            "Author": req.body.Author,
-            "Published": req.body.Published,
-            "Description": req.body.Description,
-            "Price": req.body.Price
+        let updatedCalculator = {
+            "Course": req.body.Course,
+            "CourseCode": req.body.CourseCode,
+            "Professor": req.body.Professor,
+            "MarksG": req.body.MarksG,
+            "MarksT": req.body.MarksT
         };
 
-        await Book.findByIdAndUpdate(id, updatedBook);
+        await Calculator.findByIdAndUpdate(id, updatedCalculator);
         res.redirect('/');  // Redirect to home page (or to your books list)
     } catch (err) {
         console.error(err);
