@@ -1,18 +1,18 @@
 var express = require('express');
 var router = express.Router();
-let Book = require('../model/book');
+let Calculator = require('../model/calculator');
 
 // Route to get the list of books
 router.get('/', async (req, res, next) => {
     try {
-        const BookList = await Book.find();
-        res.render('Book/list', {
-            title: 'Books',
-            bookList: BookList
+        const calculatorList = await Calculator.find();
+        res.render('Calculate/calculator', {
+            title: 'Calculator',
+            calculatorList: calculatorList
         });
     } catch (err) {
         console.error(err);
-        res.render('Book/list', {
+        res.render('calculator', {
             error: 'Error on Server'
         });
     }
