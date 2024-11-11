@@ -17,7 +17,6 @@ router.get('/', async (req, res, next) => {
         });
     }
 });
-
 // Route to show the add book page
 router.get('/add', async (req, res, next) => {
     try {
@@ -43,7 +42,7 @@ router.post('/add', async (req, res, next) => {
             "MarksT": req.body.MarksT
         });
         await newCalculator.save(); // Use save instead of create for a cleaner approach
-        res.redirect('/');  // Redirect to home page (or to your books list)
+        res.redirect('/calculator');  // Redirect to home page (or to your books list)
     } catch (err) {
         console.error(err);
         res.render('calculator', {
@@ -83,7 +82,7 @@ router.post('/edit/:id', async (req, res, next) => {
         };
 
         await Calculator.findByIdAndUpdate(id, updatedCalculator);
-        res.redirect('/');  // Redirect to home page (or to your books list)
+        res.redirect('/calculator');  // Redirect to home page (or to your books list)
     } catch (err) {
         console.error(err);
         next(err);
@@ -95,7 +94,7 @@ router.post('/delete/:id', async (req, res, next) => {
     try {
         let id = req.params.id;
         await Calculator.deleteOne({ _id: id });
-        res.redirect('/');  // Redirect to home page (or to your books list)
+        res.redirect('/calculator');  // Redirect to home page (or to your books list)
     } catch (err) {
         console.error(err);
         res.render('Calculate/calculator', {
