@@ -11,7 +11,7 @@ let logger = require('morgan');
 // www.assignment2/contactus
 let indexRouter = require('../routes/index');
 let usersRouter = require('../routes/users');
-let bookRouter = require('../routes/book');
+let calcRouter = require('../routes/calculator');
 
 let app = express();
 let mongoose = require('mongoose');
@@ -34,7 +34,7 @@ app.use(express.static(path.join(__dirname, '../../public')));
 app.use(express.static(path.join(__dirname, '../../node_modules')));
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
-app.use('/bookslist', bookRouter);
+app.use('/calculator', calcRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
