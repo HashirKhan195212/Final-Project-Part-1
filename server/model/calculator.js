@@ -2,11 +2,12 @@
 let mongoose = require('mongoose')
 //create a model class
 let calculatorModel = mongoose.Schema({
-    Name:String,
-    Author:String,
-    Description:String,
-    Published:Number,
-    Price:Number
+    Course:String,
+    CourseCode:String,
+    Professor:String,
+    Percentage:Number,
+    MarksG:Number,
+    MarksT:Number
 },
 {
     collection: "Calculate"

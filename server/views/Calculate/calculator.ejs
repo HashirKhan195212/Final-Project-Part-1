@@ -11,23 +11,25 @@
             </a>
             <table class="table table-bordered table-striped table-hover">
                 <tr class="d-flex">
-                    <th class="text-center col-2">Name</th>
-                    <th class="text-center col-2">Author</th>
-                    <th class="text-center col-1">Published</th>
-                    <th class="col-4">Description</th>
-                    <th class="text-center col-1">Price</th>
+                    <th class="text-center col-2">Course</th>
+                    <th class="text-center col-2">Course Code</th>
+                    <th class="text-center col-1">Professor</th>
+                    <th class="text-center col-1">Marks Gained</th>
+                    <th class="text-center col-1">Total Marks</th>
+                    <th class="text-center col-1">Percentage</th>
                 </tr>
                 <% for(let count=0;count<calculatorList.length;count++) { %>
                 <tr class="d-flex">
-                    <td class="text-center col-2"><%= calculatorList[count].Name %></td>
-                    <td class="text-center col-2"><%= calculatorList[count].Author %></td>
-                    <td class="text-center col-1"><%=calculatorList[count].Published%></td>
-                    <td class="col-4"><%= calculatorList[count].Description %> </td>
-                    <td class="text-center col-1"><%= calculatorList[count].Price %></td>
+                    <td class="text-center col-2"><%= calculatorList[count].Course %></td>
+                    <td class="text-center col-2"><%= calculatorList[count].CourseCode %></td>
+                    <td class="text-center col-1"><%=calculatorList[count].Professor%></td>
+                    <td class="col-1"><%= calculatorList[count].MarksG %> </td>
+                    <td class="col-1"><%= calculatorList[count].MarksT %> </td>
+                    <td class="col-4"><%= calculatorList[count].Percentage %> </td>
                     <td class="text-center col-1">
-                        <a href="/bookslist/edit/<%= calculatorList[count]._id%>"
+                        <a href="/calculator/edit/<%= calculatorList[count]._id%>"
                             class="btn btn-primary btn-sm">
-                        <i class="fas fa-pencil-alt"></i>Edit Values
+                        <i class="fas fa-pencil-alt"></i>Edit Grade
                     </a>
                     </td>
                     <td class="text-center col-1">
