@@ -4,11 +4,6 @@ let path = require('path');
 let cookieParser = require('cookie-parser');
 let logger = require('morgan');
 
-// www.Assignment2.ca/
-// www.assignment2/home
-// www.assignment2/aboutme
-// www.assignment2/project
-// www.assignment2/contactus
 let indexRouter = require('../routes/index');
 let usersRouter = require('../routes/users');
 let calcRouter = require('../routes/calculator');
