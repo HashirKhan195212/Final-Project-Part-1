@@ -1,17 +1,26 @@
+// Import required modules
+// For creating HTTP errors
 let createError = require('http-errors');
+// For Express
 let express = require('express');
+ // For handling and transforming file paths
 let path = require('path');
+// For parsing cookies
 let cookieParser = require('cookie-parser');
+// For logging HTTP requests
 let logger = require('morgan');
 
+// Making routes
 let indexRouter = require('../routes/index');
 let usersRouter = require('../routes/users');
 let calcRouter = require('../routes/calculator');
 
+// Express application
 let app = express();
 let mongoose = require('mongoose');
 let DB = require('./db')
 mongoose.connect(DB.URI);
+// Set up MongoDB connection using Mongoose
 let mongoDB = mongoose.connection;
 mongoDB.on('error',console.error.bind(console,'Connection Error'))
 mongoDB.once('open',()=>{
@@ -46,5 +55,5 @@ app.use(function(err, req, res, next) {
   res.status(err.status || 500);
   res.render('error',{title:'Error'});
 });
-
+// app module
 module.exports = app;
