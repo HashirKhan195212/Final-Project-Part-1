@@ -10,7 +10,7 @@ router.get('/', async (req, res, next) => {
     try {
         // Using all entries from the database using the Calculator model
         const calculatorList = await Calculator.find();
-        res.render('calculate/calculator', {
+        res.render('Calculate/index', {
             // Page title
             title: 'Calculator',
             // Data that will be used
@@ -58,7 +58,7 @@ router.post('/add', async (req, res, next) => {
         // Save the new entry to the database
         await newCalculator.save();
         // Redirects to calculator
-        res.redirect('/calculator');  
+        res.redirect('/index');  
     } catch (err) {
         // Redirects to calculator
         console.error(err);
@@ -105,7 +105,7 @@ router.post('/edit/:id', async (req, res, next) => {
         };
 
         await Calculator.findByIdAndUpdate(id, updatedCalculator);
-        res.redirect('/calculator');  // Redirect to home page (or to your books list)
+        res.redirect('/index');  // Redirect to home page (or to your books list)
     } catch (err) {
         console.error(err);
         next(err);
@@ -117,10 +117,10 @@ router.post('/delete/:id', async (req, res, next) => {
     try {
         let id = req.params.id;
         await Calculator.deleteOne({ _id: id });
-        res.redirect('/calculator');  // Redirect to home page (or to your books list)
+        res.redirect('/index');  // Redirect to home page (or to your books list)
     } catch (err) {
         console.error(err);
-        res.render('Calculate/calculator', {
+        res.render('Calculate/index', {
             error: 'Error on server'
         });
     }
