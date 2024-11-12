@@ -20,7 +20,7 @@ router.get('/', async (req, res, next) => {
         // show the error to the console
         console.error(err);
         // Render an error message
-        res.render('calculator', {
+        res.render('index', {
             error: 'Error on Server'
         });
     }
@@ -37,7 +37,7 @@ router.get('/add', async (req, res, next) => {
         // show the error to the console
         console.error(err);
         // Render an error message
-        res.render('calculator', {
+        res.render('index', {
             error: 'Error on Server'
         });
     }
@@ -95,7 +95,9 @@ router.get('/edit/:id', async (req, res, next) => {
 // Route to handle editing a book
 router.post('/edit/:id', async (req, res, next) => {
     try {
+        // Get the ID from the route parameters
         let id = req.params.id;
+        // Create an updated entry with the data
         let updatedCalculator = {
             "Course": req.body.Course,
             "CourseCode": req.body.CourseCode,
@@ -103,9 +105,9 @@ router.post('/edit/:id', async (req, res, next) => {
             "MarksG": req.body.MarksG,
             "MarksT": req.body.MarksT
         };
-
+        // Find the entry by ID and update it in the database
         await Calculator.findByIdAndUpdate(id, updatedCalculator);
-        res.redirect('/index');  // Redirect to home page (or to your books list)
+        res.redirect('/index');  // Redirect to calculator
     } catch (err) {
         console.error(err);
         next(err);
@@ -117,8 +119,9 @@ router.post('/delete/:id', async (req, res, next) => {
     try {
         let id = req.params.id;
         await Calculator.deleteOne({ _id: id });
-        res.redirect('/index');  // Redirect to home page (or to your books list)
+        res.redirect('/index');  // Redirect to calculator
     } catch (err) {
+        // errors to the console
         console.error(err);
         res.render('Calculate/index', {
             error: 'Error on server'
