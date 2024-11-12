@@ -1,39 +1,53 @@
+// Import the Express module
 var express = require('express');
+// Create a router object from Express
 var router = express.Router();
+// Calls model from model folder
 let Calculator = require('../model/calculator');
-
-// Route to get the list of books
+// Route to get the list of all calculations or entries
 router.get('/', async (req, res, next) => {
+    // Try catch method
     try {
+        // Using all entries from the database using the Calculator model
         const calculatorList = await Calculator.find();
         res.render('calculate/calculator', {
+            // Page title
             title: 'Calculator',
+            // Data that will be used
             calculatorList: calculatorList
         });
     } catch (err) {
+        // show the error to the console
         console.error(err);
+        // Render an error message
         res.render('calculator', {
             error: 'Error on Server'
         });
     }
 });
-// Route to show the add book page
+// / Route to display to add a new entry
 router.get('/add', async (req, res, next) => {
+    // Try catch method
     try {
+        // Render the add page with a title
         res.render('Calculate/add', {
             title: "Add Grade"
         });
     } catch (err) {
+        // show the error to the console
         console.error(err);
+        // Render an error message
         res.render('calculator', {
             error: 'Error on Server'
         });
     }
 });
 
-// Route to handle adding a book
+// Route to handle adding new data
 router.post('/add', async (req, res, next) => {
+    // Try catch method
     try {
+        // Using all entries from the database using the Calculator model
         let newCalculator = new Calculator({
             "Course": req.body.Course,
             "CourseCode": req.body.CourseCode,
@@ -41,24 +55,33 @@ router.post('/add', async (req, res, next) => {
             "MarksG": req.body.MarksG,
             "MarksT": req.body.MarksT
         });
-        await newCalculator.save(); // Use save instead of create for a cleaner approach
-        res.redirect('/calculator');  // Redirect to home page (or to your books list)
+        // Save the new entry to the database
+        await newCalculator.save();
+        // Redirects to calculator
+        res.redirect('/calculator');  
     } catch (err) {
+        // Redirects to calculator
         console.error(err);
+        // Render an error message
         res.render('calculator', {
             error: 'Error on server'
         });
     }
 });
 
-// Route to show the edit page for a book
+// Route to show the edit page for calculations
 router.get('/edit/:id', async (req, res, next) => {
+    // Try catch method
     try {
+        // Get the ID from the route parameters
         const id = req.params.id;
+        // Find the entry to edit using the ID
         const CalculatorToEdit = await Calculator.findById(id);
         if (!CalculatorToEdit) {
+            // If the entry is not found, send a 404 response
             return res.status(404).send('Values not found');
         }
+        // Rendering the edit page
         res.render('Calculate/edit', {
             title: 'Edit Values',
             Calculator: CalculatorToEdit
