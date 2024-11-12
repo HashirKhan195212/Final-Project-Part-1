@@ -10,6 +10,7 @@ let calculatorModel = mongoose.Schema({
     MarksT:Number
 },
 {
+    // creating a collection
     collection: "Calculate"
 }
 )
