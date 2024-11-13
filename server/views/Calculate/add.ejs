@@ -1,32 +1,43 @@
-<%- include ../Partials/header.ejs%>
-<%- include ../Partials/main_nav.ejs%>
-<!--Content for Add Page-->
+<!--Call header-->
+<%- include ../Partials/header.ejs %>
+<!--Call Nav Bar-->
+<%- include ../Partials/main_nav.ejs %>
+<!--container class-->
 <div class="container">
+    <!-- Row to center the form horizontally -->
     <div class="row">
         <div class="offset-md-3 col-md-6">
+            <!-- Form for submitting course information -->
             <form class="form" method="POST">
+                <!-- Form group for the Course field -->
                 <div class="form-group">
                     <label for="courseTextField">Course</label>
                     <input type="text" class="form-control" id="nameTextField" placeholder="Enter the Course" name="Course" required>
                 </div>
+                <!-- Form group for the Course Code field -->
                 <div class="form-group">
                     <label for="coursecodeTextField">Course Code</label>
                     <input type="text" class="form-control" id="coursecodeTextField" placeholder="Enter the Course Code" name="CourseCode" required>
                 </div>
+                <!-- Form group for the Professor field -->
                 <div class="form-group">
                     <label for="professorTextField">Professor</label>
                     <input type="text" class="form-control" id="professorTextField" placeholder="Enter the Professor's name" name="Professor" required>
                 </div>
+                <!-- Form group for the Marks Gained field -->
                 <div class="form-group">
                     <label for="marksgTextField">Marks Gained</label>
                     <input type="text" class="form-control" id="averageTextField" placeholder="Marks Gained" name="MarksG" required>
                 </div>
+                <!-- Form group for the Total Marks field -->
                 <div class="form-group">
                     <label for="markstTextField">Total Marks</label>
                     <input type="text" class="form-control" id="markstTextField" placeholder="Total Marks" name="MarksT" required>
                 </div>
+                <!--Submit Button-->
                 <button class="btn btn-primary" type="submit">Submit
                 <i class="fas fa-edit"></i></button>  
+                <!--Cancel Button--> 
                 <button class="btn btn-warning" type="submit">Cancel
                     <i class="fas fa-undo"></i></button>    
             </form>
