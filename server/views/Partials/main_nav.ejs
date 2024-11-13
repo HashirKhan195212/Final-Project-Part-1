@@ -1,19 +1,27 @@
+<!--Navbar with Bootstrap-->
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+  <!--Container to keep navbar contents aligned-->
     <div class="container-fluid">
+      <!--adding logo to navbar-->
       <a class="navbar-brand" href="#">
         <img src="/Assets/calc.png" alt="Calc Logo" style="height: 30px;">
     </a>
+    <!--Button for toggling the collapsed navbar-->
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
+      <!--Collapsible navbar content-->
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav ms-auto">
+          <!--Nav item for the Calculator page-->
           <li class="nav-item">
+            <!--what to show when title is calculator-->
             <% if(title=="Calculator"){ %>
             <a class="nav-link active" href="/index">
             <% } else { %>
               <a class="nav-link" href="/index">
               <% } %>
+              <!--visual display of calculator navbar section-->
               <i class="fa-solid fa-book"></i> Calculator</a>
           </li>
         </ul>
