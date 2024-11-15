@@ -20,6 +20,11 @@ let calcRouter = require('../routes/calculator');
 
 // Express application
 let app = express();
+let session = require('express-session')
+let passport = require('passport')
+let passportLocal = require('passport-local')
+let flash = require('connect-flash')
+let localStrategy = passportLocal.Strategy;
 let mongoose = require('mongoose');
 let DB = require('./db')
 mongoose.connect(DB.URI);
@@ -29,6 +34,14 @@ mongoDB.on('error',console.error.bind(console,'Connection Error'))
 mongoDB.once('open',()=>{
   console.log('MongoDB connected')
 })
+app.use(session({
+  secret:"SomeSecret",
+  saveUninitialized:false,
+  resave:false
+}))
+app.use(flash())
+app.use(passport.initialize());
+app.use(passport.session());
 // view engine setup
 app.set('views', path.join(__dirname, '../views'));
 app.set('view engine', 'ejs');
