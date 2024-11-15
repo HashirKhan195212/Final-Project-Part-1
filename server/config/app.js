@@ -20,6 +20,10 @@ let calcRouter = require('../routes/calculator');
 
 // Express application
 let app = express();
+let cors = require('cors')
+// create a user model instance
+let userModel = require('../model/User');
+let User = userModel.User;
 let session = require('express-session')
 let passport = require('passport')
 let passportLocal = require('passport-local')
@@ -40,6 +44,8 @@ app.use(session({
   resave:false
 }))
 app.use(flash())
+passport.serializeUser(User.serializeUser());
+passport.deserializeUser(User.deserializeUser());
 app.use(passport.initialize());
 app.use(passport.session());
 // view engine setup
