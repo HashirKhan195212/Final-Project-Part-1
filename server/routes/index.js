@@ -34,7 +34,7 @@ router.post('/login', function(req,res,next){
       if(err){
         return next(err);
       }
-      return res.redirect('calculator')
+      return res.redirect('index')
     })
   })(req,res,next)
 })

@@ -30,6 +30,7 @@ let passportLocal = require('passport-local')
 let flash = require('connect-flash')
 passport.use(User.createStrategy());
 let localStrategy = passportLocal.Strategy;
+
 let mongoose = require('mongoose');
 let DB = require('./db')
 mongoose.connect(DB.URI);
