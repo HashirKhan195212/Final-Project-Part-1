@@ -30,7 +30,13 @@ Kapiraj Sivakumar 100817815-->
           <% if(typeof displayName == 'string' && displayName) {
             <li class="navbar-text">
               <i class="fas fa-lg fa-user"></i>
-              
+              Welcome, <% displayName %>
+            </li>
+            <li class="nav-item">
+              <a href="/logout" class="nav-link"></a>
+              <i class="fas fa-lg fa-sign-out-alt"></i>
+              Logout
+            </li>
           <% } else { %>
           <% } %>
         </ul>
