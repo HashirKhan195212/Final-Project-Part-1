@@ -7,6 +7,9 @@ var express = require('express');
 var router = express.Router();
 // Calls model from model folder
 let Calculator = require('../model/calculator');
+function requireAuth(req,res,next){
+    
+}
 // Route to get the list of all calculations or entries
 router.get('/', async (req, res, next) => {
     // Try catch method
