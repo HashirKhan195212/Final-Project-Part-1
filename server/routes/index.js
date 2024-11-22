@@ -9,7 +9,9 @@ let userModel = require('../model/User')
 let User = userModel.User;
 /* GET index page. */
 router.get('Calculate/index', function(req, res, next) {
-  res.render('index', { title: 'Home' });
+  res.render('index', { 
+    title: 'Calculator', 
+    displayName:req.user ? req.user.displayName:'' });
 });
 
 router.get('/login', function(req,res,next){
@@ -17,7 +19,7 @@ router.get('/login', function(req,res,next){
     res.render('auth/login',{
       title:'Login',
       message:req.flash('loginmessage'),
-      displayName:req.user ? req.user.displayName:''
+      displayName:req.user ? req.user.displayName:'' 
     })
   }
   else{
@@ -41,11 +43,11 @@ router.post('/login', function(req,res,next){
 
 router.get('/register', function(req,res,next){
   if(!req.user){
-    res.render('auth/register',
+    res.render('Auth/register',
     {
       title:'Register',
       message:req.flash('registerMessage'),
-      displayName: req.user ? req.user.displayName:''
+      displayName:req.user ? req.user.displayName:''
     }
   )
   }
@@ -69,7 +71,7 @@ router.post('/register', function(req,res,next){
       return res.render('auth/register',{
         title:'Register',
         message:req.flash('registerMessage'),
-        displayName: req.user ? req.user.displayName:''
+        displayName:req.user ? req.user.displayName:''
 
       })
     }

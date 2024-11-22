@@ -22,6 +22,7 @@ router.get('/', async (req, res, next) => {
         res.render('Calculate/index', {
             // Page title
             title: 'Calculator',
+            displayName:req.user ? req.user.displayName:'',
             // Data that will be used
             calculatorList: calculatorList
         });
@@ -40,7 +41,8 @@ router.get('/add', async (req, res, next) => {
     try {
         // Render the add page with a title
         res.render('Calculate/add', {
-            title: "Add Grade"
+            title: "Add Grade",
+            displayName:req.user ? req.user.displayName:''
         });
     } catch (err) {
         // show the error to the console
