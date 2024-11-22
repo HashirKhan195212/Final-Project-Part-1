@@ -8,7 +8,10 @@ var router = express.Router();
 // Calls model from model folder
 let Calculator = require('../model/calculator');
 function requireAuth(req,res,next){
-    
+    if(!req.isAuthenticated()){
+        return res.redidirect('/login')
+    }
+    next()
 }
 // Route to get the list of all calculations or entries
 router.get('/', async (req, res, next) => {
