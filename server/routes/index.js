@@ -23,7 +23,7 @@ router.get('/login', function(req,res,next){
     })
   }
   else{
-    return res.redirect('/')
+    return res.redirect('/index')
   }
 })
 router.post('/login', function(req,res,next){

@@ -22,12 +22,23 @@ Kapiraj Sivakumar 100817815-->
             <table class="table table-bordered table-striped table-hover">
                  <!-- Table header row with column names -->
                 <tr class="d-flex">
+                    <% if(typeof displayName == 'string' && displayName) { %>
                     <th class="text-center col-2">Course</th>
                     <th class="text-center col-2">Course Code</th>
                     <th class="text-center col-2">Professor</th>
                     <th class="text-center col-1">Marks Gained</th>
                     <th class="text-center col-1">Total Marks</th>
                     <th class="text-center col-2">Percentage</th>
+                    <th class="text-center col-1"></th>
+                    <th class="text-center col-1"></th>
+                    <% } else{ %>
+                        <th class="text-center col-2">Course</th>
+                    <th class="text-center col-2">Course Code</th>
+                    <th class="text-center col-2">Professor</th>
+                    <th class="text-center col-1">Marks Gained</th>
+                    <th class="text-center col-1">Total Marks</th>
+                    <th class="text-center col-2">Percentage</th>
+                    <% } %>
                 </tr>
                 <!--Loop through each item in calculatorList to fill rows-->
                 <% for(let count=0;count<calculatorList.length;count++) { %>
