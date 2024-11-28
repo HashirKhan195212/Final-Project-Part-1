@@ -88,7 +88,7 @@ router.get('/logout', function(req,res,next){
       return next(err)
     }
   })
-  res.redirect('/')
+  res.redirect('/index')
 })
 // exports router
 module.exports = router;
