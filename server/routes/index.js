@@ -68,7 +68,7 @@ router.post('/register', function(req,res,next){
       if(err.name=="USerExistError"){
         req.flash('registerMessage', 'Registration Error: User already Exists');
       }
-      return res.render('auth/register',{
+      return res.render('Auth/register',{
         title:'Register',
         message:req.flash('registerMessage'),
         displayName:req.user ? req.user.displayName:''
