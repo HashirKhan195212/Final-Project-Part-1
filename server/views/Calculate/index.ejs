@@ -1,78 +1,82 @@
-<!--Hashir Khan 100911091
-Afeef Hossain 100923314
-Kapiraj Sivakumar 100817815-->
-<!--Call header-->
+<!-- Hashir Khan 100911091 -->
+<!-- Afeef Hossain 100923314 -->
+<!-- Kapiraj Sivakumar 100817815 -->
+
+<!-- Include Header -->
 <%- include ../Partials/header.ejs%>
-<!--Call Navbar-->
+
+<!-- Include Navbar -->
 <%- include ../Partials/main_nav.ejs%>
-<!-- Main content container for the page -->
-<main class="container">
+
+<!-- Main Content -->
+<main class="container bg-light text-black py-5">
     <div class="row">
         <div class="offset-md-1 col-md-10">
-            <!-- Page title display -->
-            <h1><%= title %></h1>
-            <br>
-            <% if(typeof displayName == 'string' && displayName) { %>
-            <!--Button to add a new grade entry-->
-            <a href="/index/add" class="btn btn-primary" role="button">
-                <i class="fas fa-plus-circle"></i> Calculate New Grade
-            </a>
+            <!-- Page Title -->
+            <h1 class="text-center mb-4"><%= title %></h1>
+
+            <% if (typeof displayName == 'string' && displayName) { %>
+            <!-- Add Grade Button -->
+            <div class="mb-3 text-center">
+                <a href="/index/add" class="btn btn-primary" role="button">
+                    <i class="fas fa-plus-circle"></i> Calculate New Grade
+                </a>
+            </div>
             <% } %>
-             <!-- Table to display calculator data -->
-            <table class="table table-bordered table-striped table-hover">
-                 <!-- Table header row with column names -->
-                <tr class="d-flex">
-                    <% if(typeof displayName == 'string' && displayName) { %>
-                    <th class="text-center col-2">Course</th>
-                    <th class="text-center col-2">Course Code</th>
-                    <th class="text-center col-2">Professor</th>
-                    <th class="text-center col-1">Marks Gained</th>
-                    <th class="text-center col-1">Total Marks</th>
-                    <th class="text-center col-2">Percentage</th>
-                    <th class="text-center col-1"></th>
-                    <th class="text-center col-1"></th>
-                    <% } else{ %>
-                        <th class="text-center col-2">Course</th>
-                    <th class="text-center col-2">Course Code</th>
-                    <th class="text-center col-2">Professor</th>
-                    <th class="text-center col-1">Marks Gained</th>
-                    <th class="text-center col-1">Total Marks</th>
-                    <th class="text-center col-2">Percentage</th>
+
+            <!-- Grades Table -->
+            <table class="table table-bordered table-striped table-hover text-center text-white">
+                <!-- Table Header -->
+                <thead class="thead-light">
+                    <tr>
+                        <th>Course</th>
+                        <th>Course Code</th>
+                        <th>Professor</th>
+                        <th>Marks Gained</th>
+                        <th>Total Marks</th>
+                        <th>Percentage</th>
+                        <% if (typeof displayName == 'string' && displayName) { %>
+                        <th>Edit</th>
+                        <th>Delete</th>
+                        <% } %>
+                    </tr>
+                </thead>
+
+                <!-- Table Body -->
+                <tbody>
+                    <% for (let count = 0; count < calculatorList.length; count++) { %>
+                    <tr>
+                        <td><%= calculatorList[count].Course %></td>
+                        <td><%= calculatorList[count].CourseCode %></td>
+                        <td><%= calculatorList[count].Professor %></td>
+                        <td><%= calculatorList[count].MarksG %></td>
+                        <td><%= calculatorList[count].MarksT %></td>
+                        <td>
+                            <%= ((Number(calculatorList[count].MarksG) / Number(calculatorList[count].MarksT)) * 100).toFixed(2) %>%
+                        </td>
+                        <% if (typeof displayName == 'string' && displayName) { %>
+                        <!-- Edit Button -->
+                        <td>
+                            <a href="/index/edit/<%= calculatorList[count]._id %>" class="btn btn-primary btn-sm">
+                                <i class="fas fa-pencil-alt"></i> Edit Grade
+                            </a>
+                        </td>
+                        <!-- Delete Button -->
+                        <td>
+                            <form action="/index/delete/<%= calculatorList[count]._id %>" method="POST" style="display:inline;">
+                                <button type="submit" class="btn btn-danger btn-sm">
+                                    <i class="fas fa-trash-alt"></i> Delete Grade
+                                </button>
+                            </form>
+                        </td>
+                        <% } %>
+                    </tr>
                     <% } %>
-                </tr>
-                <!--Loop through each item in calculatorList to fill rows-->
-                <% for(let count=0;count<calculatorList.length;count++) { %>
-                <tr class="d-flex">
-                    <td class="text-center col-2"><%= calculatorList[count].Course %></td>
-                    <td class="text-center col-2"><%= calculatorList[count].CourseCode %></td>
-                    <td class="text-center col-2"><%= calculatorList[count].Professor %></td>
-                    <td class="text-center col-1"><%= calculatorList[count].MarksG %> </td>
-                    <td class="text-center col-1"><%= calculatorList[count].MarksT %> </td>
-                    <td class="text-center col-2">
-                        <%= ((Number(calculatorList[count].MarksG) / Number(calculatorList[count].MarksT))*100) %>%
-                    </td>
-                    <% if(typeof displayName == 'string' && displayName) { %>
-                    <!--edit button-->
-                    <td class="text-center col-1">
-                        <a href="/index/edit/<%= calculatorList[count]._id%>"
-                            class="btn btn-primary btn-sm">
-                        <i class="fas fa-pencil-alt"></i>Edit Grade
-                    </a>
-                    </td>
-                    <!--delete button-->
-                    <td class="text-center col-1">
-                        <form action="/index/delete/<%= calculatorList[count]._id %>" method="POST" style="display:inline;">
-                            <button type="submit" class="btn btn-danger btn-sm">
-                                <i class="fas fa-trash-alt"></i> Delete Grade
-                            </button>
-                        </form>
-                    </td>
-                    <% } %>
-                </tr>    
-                    <%} %>
+                </tbody>
             </table>
         </div>
     </div>
 </main>
-<!--call footer-->
+
+<!-- Include Footer -->
 <%- include ../Partials/footer.ejs%>
