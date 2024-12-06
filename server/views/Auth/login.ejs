@@ -1,39 +1,57 @@
 <!--Hashir Khan 100911091
 Afeef Hossain 100923314
 Kapiraj Sivakumar 100817815-->
-<!--call header-->
+<!-- Include Header -->
 <%- include ../Partials/header.ejs%>
-<!--call navbar-->
+
+<!-- Include Navbar -->
 <%- include ../Partials/main_nav.ejs%>
-<main class="container">
-    <!--Message Area-->
-    <% if(message.length > 0) { %>
-        <div class="alter alter-danger">
+
+<main class="container bg-light text-black py-5">
+    <!-- Message Area -->
+    <% if (message.length > 0) { %>
+        <div class="alert alert-danger">
             <%= message %>
         </div>
-        <% } %>
-        <!--creating the form for login-->
-        <div class="row">
-            <div class="offset-md-4 col-md-4">
-                <h1>Please Login</h1>
-                <form method="post" autocomplete="off">
-                    <fieldset class="form-group">
-                        <label for="username"></label>
-                        <input type="text" class="form-control" name="username" placeholder="Enter the username" id="username" required autofocus>
-                    </fieldset>
-                    <fieldset class="form-group">
-                        <label for="password"></label>
-                        <input type="text" class="form-control" name="password" placeholder="Enter the password" id="password" required>
-                        or
-                        <!--link for registering-->
-                        <a href="/register">Register Here</a>
-                    </fieldset>
-                    <fieldset class="form-group text-right">
-                        <input type="submit" class="btn btn-success" value="Login">
-                        <a href="/"><input type="button" class="btn btn-warning"value="Cancel"></a>
-                    </fieldset>
-                </form>
-            </div>
+    <% } %>
+
+    <!-- Login Form -->
+    <div class="row">
+        <div class="offset-md-4 col-md-4">
+            <h1 class="text-center mb-4">Please Login</h1>
+            <form method="post" autocomplete="off">
+                <fieldset class="form-group mb-3">
+                    <label for="username" class="form-label">Username</label>
+                    <input 
+                        type="text" 
+                        class="form-control border-primary bg-white text-dark" 
+                        name="username" 
+                        placeholder="Enter the username" 
+                        id="username" 
+                        required 
+                        autofocus>
+                </fieldset>
+                <fieldset class="form-group mb-3">
+                    <label for="password" class="form-label">Password</label>
+                    <input 
+                        type="password" 
+                        class="form-control border-primary bg-white text-dark" 
+                        name="password" 
+                        placeholder="Enter the password" 
+                        id="password" 
+                        required>
+                    <div class="mt-2">
+                        <small>or <a href="/register" class="text-primary">Register Here</a></small>
+                    </div>
+                </fieldset>
+                <fieldset class="form-group text-end">
+                    <button type="submit" class="btn btn-primary">Login</button>
+                    <a href="/"><button type="button" class="btn btn-primary">Cancel</button></a>
+                </fieldset>
+            </form>
         </div>
+    </div>
 </main>
+
+<!-- Include Footer -->
 <%- include ../Partials/footer.ejs%>
