@@ -1,52 +1,53 @@
-<!--Hashir Khan 100911091
-Afeef Hossain 100923314
-Kapiraj Sivakumar 100817815-->
-<!--Navbar with Bootstrap-->
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-  <!--Container to keep navbar contents aligned-->
-    <div class="container-fluid">
-      <!--adding logo to navbar-->
-      <a class="navbar-brand" href="#">
-        <img src="/Assets/calc.png" alt="Calc Logo" style="height: 30px;">
+<!-- Hashir Khan 100911091 -->
+<!-- Afeef Hossain 100923314 -->
+<!-- Kapiraj Sivakumar 100817815 -->
+<!-- Navbar with Bootstrap -->
+<nav class="navbar navbar-expand-lg" style="background-color: #003366;">
+  <!-- Container to keep navbar contents aligned -->
+  <div class="container-fluid">
+    <!-- Adding logo to navbar -->
+    <a class="navbar-brand" href="#">
+      <img src="/Assets/calc.png" alt="Calc Logo" style="height: 30px;">
     </a>
-    <!--Button for toggling the collapsed navbar-->
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <!--Collapsible navbar content-->
-      <div class="collapse navbar-collapse" id="navbarSupportedContent">
-        <ul class="navbar-nav ms-auto">
-          <!--Nav item for the Calculator page-->
-          <li class="nav-item">
-            <!--what to show when title is calculator-->
-            <% if(title=="Calculator"){ %>
-            <a class="nav-link active" href="/index">
-            <% } else { %>
-              <a class="nav-link" href="/index">
-              <% } %>
-              <!--visual display of calculator navbar section-->
-              <i class="fa-solid fa-book"></i> Calculator</a>
-          </li>
-          <% if(typeof displayName == 'string' && displayName) { %>
-            <li class="navbar-text">
-              <i class="fas fa-lg fa-user"></i>
-              Welcome, <% displayName %>
-            </li>
-            <li class="nav-item">
-              <a href="/logout" class="nav-link">
-              <i class="fas fa-lg fa-sign-out-alt"></i>
-              Logout
-            </a>
-            </li>
+    <!-- Button for toggling the collapsed navbar -->
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <!-- Collapsible navbar content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ms-auto">
+        <!-- Nav item for the Calculator page -->
+        <li class="nav-item">
+          <% if (title == "Calculator") { %>
+            <a class="nav-link active text-white" href="/index">
           <% } else { %>
-            <li class="nav-item">
-              <a href="/login" class="nav-link">
-                <i class="fas fa-lg fa-sign-in-alt"></i>
-                Login
-              </a>
-            </li>
+            <a class="nav-link text-white" href="/index">
           <% } %>
-        </ul>
-      </div>
+          <!-- Visual display of calculator navbar section -->
+          <i class="fa-solid fa-book"></i> Calculator</a>
+        </li>
+
+        <% if (typeof displayName == 'string' && displayName) { %>
+          <!-- Welcome text -->
+          <li class="navbar-text text-white">
+            <i class="fas fa-lg fa-user"></i>
+            Welcome, <%= displayName %>
+          </li>
+          <!-- Logout link -->
+          <li class="nav-item">
+            <a href="/logout" class="nav-link text-white">
+              <i class="fas fa-lg fa-sign-out-alt"></i> Logout
+            </a>
+          </li>
+        <% } else { %>
+          <!-- Login link -->
+          <li class="nav-item">
+            <a href="/login" class="nav-link text-white">
+              <i class="fas fa-lg fa-sign-in-alt"></i> Login
+            </a>
+          </li>
+        <% } %>
+      </ul>
     </div>
-  </nav>
+  </div>
+</nav>
